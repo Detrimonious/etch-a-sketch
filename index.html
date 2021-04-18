@@ -21,6 +21,7 @@
 
         <script>
             let gridAmount = 16;
+            const CONTAINER_MAX_WIDTH = 960;
             const containerDiv = document.querySelector('#container');
 
             const btn = document.querySelector('button');
@@ -43,7 +44,9 @@
 
             function createGrids(gridAmount){
 
-                containerDiv.style.cssText=`grid-template-rows: repeat(${gridAmount}, minmax(50px, 1fr)); grid-template-columns: repeat(${gridAmount}, minmax(50px, 1fr))`;
+                let repeatSize = CONTAINER_MAX_WIDTH / gridAmount;
+
+                containerDiv.style.cssText=`grid-template-rows: repeat(${gridAmount}, ${repeatSize}px); grid-template-columns: repeat(${gridAmount}, ${repeatSize}px)`;
 
                 for (let i=0; i<gridAmount; i++){
                     for (let j=0; j<gridAmount; j++){
