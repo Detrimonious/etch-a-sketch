@@ -6,10 +6,58 @@
         <title>Etch-a-Sketch</title>
 
         <link rel="stylesheet" href="style.css">
-        <script type="text/javascript" src="script.js"></script>
-    </head>
+        <!--
+            <script type="text/javascript" src="script.js"></script>
+        -->
+        </head>
 
     <body>
+
+        <div id="buttonHolder">
+            <button>Clear</button>
+        </div> 
+
         <div id="container"></div>
+
+        <script>
+            const containerDiv = document.querySelector('#container');
+            containerDiv.style.cssText = 'grid-template-rows: repeat(16, minmax(50px, 1fr)); grid-template-columns: repeat(16, minmax(50px, 1fr))';
+
+            let gridAmount = 16;
+
+            /*
+            button.addEventListener('click', (){
+                //clears grid
+                //prompts user for new amt <=100
+                //creates grid
+
+                while(containerDiv.firstChild){
+                    containerDiv.removeChild(containerDiv.firstChild);
+                }
+            });
+            */
+
+            createGrids();
+
+            function createGrids(){
+                for (let i=0; i<gridAmount; i++){
+                    for (let j=0; j<gridAmount; j++){
+                        const gridDiv = document.createElement('div');
+                        gridDiv.classList.add('grid-item');
+
+                        gridDiv.addEventListener('mouseover', function(e){
+                            gridDiv.style.backgroundColor = 'blue';
+                        });
+
+                        containerDiv.appendChild(gridDiv);
+                    }
+                }
+            }
+
+            function resetGrid(){
+
+            }
+
+        </script>
     </body>
 </html>

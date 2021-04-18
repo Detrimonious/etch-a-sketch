@@ -1,0 +1,13 @@
+#buttonHolder{
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+#container{
+    display: grid;
+    border: 1px solid black;
+}
+
+.grid-item{
+    border: 1px solid black;
+}
