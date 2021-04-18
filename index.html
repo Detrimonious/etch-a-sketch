@@ -20,26 +20,31 @@
         <div id="container"></div>
 
         <script>
-            const containerDiv = document.querySelector('#container');
-            containerDiv.style.cssText = 'grid-template-rows: repeat(16, minmax(50px, 1fr)); grid-template-columns: repeat(16, minmax(50px, 1fr))';
-
             let gridAmount = 16;
+            const containerDiv = document.querySelector('#container');
 
-            /*
-            button.addEventListener('click', (){
-                //clears grid
-                //prompts user for new amt <=100
-                //creates grid
+            const btn = document.querySelector('button');
+            btn.addEventListener('click', function() {
 
+                //removes all divs inside container div
                 while(containerDiv.firstChild){
                     containerDiv.removeChild(containerDiv.firstChild);
                 }
+
+                do{
+                    gridAmount = prompt('Enter a new grid amount');
+                }while(gridAmount <= 0 || gridAmount > 100 || gridAmount == null || gridAmount == '')
+
+                createGrids(gridAmount);
+                
             });
-            */
 
-            createGrids();
+            createGrids(gridAmount);
 
-            function createGrids(){
+            function createGrids(gridAmount){
+
+                containerDiv.style.cssText=`grid-template-rows: repeat(${gridAmount}, minmax(50px, 1fr)); grid-template-columns: repeat(${gridAmount}, minmax(50px, 1fr))`;
+
                 for (let i=0; i<gridAmount; i++){
                     for (let j=0; j<gridAmount; j++){
                         const gridDiv = document.createElement('div');
@@ -52,10 +57,6 @@
                         containerDiv.appendChild(gridDiv);
                     }
                 }
-            }
-
-            function resetGrid(){
-
             }
 
         </script>
